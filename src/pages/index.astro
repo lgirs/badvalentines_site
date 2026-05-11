@@ -1,15 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
 ---
-<Base title="Bad Valentines">
+<Base title="Bad Valentines" nav="home">
   <style>
-    body {
+    .hero {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       min-height: 100vh;
     }
-    a {
+    a.logo-link {
       display: block;
     }
     img {
@@ -17,7 +19,10 @@ import Base from '../layouts/Base.astro';
       width: 90%;
     }
   </style>
-  <a href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
-    <img src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
-  </a>
+  <div class="hero">
+    <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
+      <img src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
+    </a>
+    <Nav type="home" />
+  </div>
 </Base>
