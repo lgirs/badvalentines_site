@@ -11,12 +11,12 @@ const { type } = Astro.props;
 
 {type === 'page' && (
   <nav class="page-nav">
-    <a href="/">
-      <img src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
-    </a>
-    <div class="page-nav-links">
-      <a href="/music">Music</a>
-      <a href="/stories">Stories</a>
+    <div class="page-nav-inner">
+      <a href="/" class="page-nav-home">Home</a>
+      <div class="page-nav-links">
+        <a href="/music">Music</a>
+        <a href="/stories">Stories</a>
+      </div>
     </div>
   </nav>
 )}
@@ -45,15 +45,26 @@ const { type } = Astro.props;
 
   /* Page nav — top bar */
   .page-nav {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md) var(--space-lg);
+  }
+  .page-nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-md) var(--space-lg);
-    border-bottom: 1px solid var(--color-border);
+    max-width: 700px;
+    margin: 0 auto;
   }
-  .page-nav img {
-    height: 40px;
-    width: auto;
+  .page-nav-home {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .page-nav-home:hover {
+    color: var(--color-accent);
   }
   .page-nav-links {
     display: flex;
