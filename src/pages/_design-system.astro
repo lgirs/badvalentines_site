@@ -1,0 +1,220 @@
+---
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bad Valentines — Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --color-bg: #0a0a0a;
+        --color-surface: #111111;
+        --color-text: #f5f5f5;
+        --color-accent: #ffffff;
+        --color-muted: #888888;
+        --color-border: #222222;
+        --font-heading: 'Bebas Neue', sans-serif;
+        --font-body: 'Special Elite', serif;
+        --text-xs: 0.75rem;
+        --text-sm: 0.875rem;
+        --text-base: 1rem;
+        --text-lg: 1.25rem;
+        --text-xl: 2rem;
+        --text-2xl: 3.5rem;
+        --space-sm: 0.5rem;
+        --space-md: 1rem;
+        --space-lg: 2rem;
+        --space-xl: 4rem;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-body);
+        padding: var(--space-xl) var(--space-lg);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .section {
+        margin-bottom: var(--space-xl);
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: var(--space-xl);
+      }
+
+      .label {
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        color: var(--color-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: var(--space-lg);
+      }
+
+      /* Typography samples */
+      .sample-h1 {
+        font-family: var(--font-heading);
+        font-size: var(--text-2xl);
+        color: var(--color-accent);
+        line-height: 1;
+        margin-bottom: var(--space-md);
+      }
+      .sample-h2 {
+        font-family: var(--font-heading);
+        font-size: var(--text-xl);
+        color: var(--color-text);
+        line-height: 1;
+        margin-bottom: var(--space-md);
+      }
+      .sample-h3 {
+        font-family: var(--font-heading);
+        font-size: var(--text-lg);
+        color: var(--color-text);
+        margin-bottom: var(--space-md);
+      }
+      .sample-body {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        color: var(--color-text);
+        line-height: 1.7;
+        margin-bottom: var(--space-md);
+      }
+      .sample-muted {
+        font-family: var(--font-body);
+        font-size: var(--text-sm);
+        color: var(--color-muted);
+        line-height: 1.7;
+      }
+
+      /* Colour swatches */
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: var(--space-md);
+      }
+      .swatch {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+      }
+      .swatch-block {
+        width: 100%;
+        height: 80px;
+        border: 1px solid var(--color-border);
+      }
+      .swatch-name {
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        color: var(--color-muted);
+      }
+      .swatch-value {
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        color: var(--color-muted);
+      }
+
+      /* UI samples */
+      .sample-button {
+        display: inline-block;
+        font-family: var(--font-heading);
+        font-size: var(--text-lg);
+        letter-spacing: 0.1em;
+        padding: var(--space-sm) var(--space-lg);
+        background: var(--color-accent);
+        color: var(--color-bg);
+        border: none;
+        cursor: pointer;
+        margin-right: var(--space-md);
+        margin-bottom: var(--space-md);
+      }
+      .sample-button-outline {
+        background: transparent;
+        color: var(--color-accent);
+        border: 1px solid var(--color-accent);
+      }
+      .sample-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        padding: var(--space-lg);
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="section">
+      <p class="label">Bad Valentines — Design System</p>
+    </div>
+
+    <!-- Colours -->
+    <div class="section">
+      <p class="label">Colours</p>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#0a0a0a;"></div>
+          <span class="swatch-name">Background</span>
+          <span class="swatch-value">#0a0a0a</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#111111;"></div>
+          <span class="swatch-name">Surface</span>
+          <span class="swatch-value">#111111</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#f5f5f5;"></div>
+          <span class="swatch-name">Primary Text</span>
+          <span class="swatch-value">#f5f5f5</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#ffffff;"></div>
+          <span class="swatch-name">Accent</span>
+          <span class="swatch-value">#ffffff</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#888888;"></div>
+          <span class="swatch-name">Muted</span>
+          <span class="swatch-value">#888888</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#222222;"></div>
+          <span class="swatch-name">Border</span>
+          <span class="swatch-value">#222222</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="section">
+      <p class="label">Typography</p>
+      <p class="sample-h1">Bad Valentines</p>
+      <p class="sample-h2">Memory Tattoos</p>
+      <p class="sample-h3">Upcoming Shows</p>
+      <p class="sample-body">We are Bad Valentines. This is the body copy typeface — Special Elite — used for descriptions, bios, and general content across the site.</p>
+      <p class="sample-muted">Supporting text, dates, captions and secondary information use this style.</p>
+    </div>
+
+    <!-- UI Elements -->
+    <div class="section">
+      <p class="label">UI Elements</p>
+      <div>
+        <button class="sample-button">Listen Now</button>
+        <button class="sample-button sample-button-outline">See All Shows</button>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="section">
+      <p class="label">Card / Surface</p>
+      <div class="sample-card">
+        <p class="sample-h3">Memory Tattoos EP</p>
+        <p class="sample-body">Released 2024. Available on all major streaming platforms.</p>
+        <p class="sample-muted">Bandcamp · Spotify · Apple Music</p>
+      </div>
+    </div>
+
+  </body>
+</html>
