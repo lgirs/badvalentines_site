@@ -1,0 +1,75 @@
+---
+const { type } = Astro.props;
+---
+
+{type === 'home' && (
+  <nav class="home-nav">
+    <a href="/music">Music</a>
+    <a href="/stories">Stories</a>
+  </nav>
+)}
+
+{type === 'page' && (
+  <nav class="page-nav">
+    <a href="/">
+      <img src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
+    </a>
+    <div class="page-nav-links">
+      <a href="/music">Music</a>
+      <a href="/stories">Stories</a>
+    </div>
+  </nav>
+)}
+
+<style>
+  /* Home nav — below logo */
+  .home-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+  .home-nav a {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .home-nav a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* Page nav — top bar */
+  .page-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-nav img {
+    height: 40px;
+    width: auto;
+  }
+  .page-nav-links {
+    display: flex;
+    gap: var(--space-lg);
+  }
+  .page-nav-links a {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .page-nav-links a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+</style>
