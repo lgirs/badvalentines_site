@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Bad Valentines — Music">
+  <style>
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-lg);
+    }
+    h1 {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      color: var(--color-accent);
+      margin-bottom: var(--space-xl);
+    }
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .link-item {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      letter-spacing: 0.08em;
+      color: var(--color-text);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: var(--space-md) var(--space-lg);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .link-item:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .link-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      margin-top: 2px;
+      letter-spacing: 0.05em;
+    }
+  </style>
+  <main>
+    <h1>Music</h1>
+    <div class="link-list">
+      <a class="link-item" href="https://orcd.co/scheduled-memory_tattoos" target="_blank" rel="noopener noreferrer">
+        Memory Tattoos EP
+        <span class="link-label">Choose your streaming service</span>
+      </a>
+      <a class="link-item" href="https://open.spotify.com/artist/3xVdUhudpYUp6NH3Pim0sd?si=KpGeEZbgSI67X6qq0bw_vA" target="_blank" rel="noopener noreferrer">
+        Spotify
+      </a>
+      <a class="link-item" href="https://tidal.com/browse/artist/47830234" target="_blank" rel="noopener noreferrer">
+        Tidal
+      </a>
+      <a class="link-item" href="https://badvalentines.bandcamp.com/" target="_blank" rel="noopener noreferrer">
+        Bandcamp
+      </a>
+      <a class="link-item" href="https://www.youtube.com/@BadValentines-band" target="_blank" rel="noopener noreferrer">
+        YouTube
+        <span class="link-label">Videos, live performances and more</span>
+      </a>
+      <a class="link-item" href="https://www.youtube.com/watch?v=..." target="_blank" rel="noopener noreferrer">
+        'Last Days In The Sun' — Official Music Video
+      </a>
+      <a class="link-item" href="https://www.youtube.com/watch?v=..." target="_blank" rel="noopener noreferrer">
+        'Mariia' — Official Music Video
+      </a>
+      <a class="link-item" href="https://www.youtube.com/watch?v=..." target="_blank" rel="noopener noreferrer">
+        100% Live at Bar Loose
+      </a>
+      <a class="link-item" href="https://www.youtube.com/watch?v=..." target="_blank" rel="noopener noreferrer">
+        'Summer Ends In June' (Live)
+      </a>
+    </div>
+  </main>
+</Base>
