@@ -1,5 +1,6 @@
 ---
-const { title = 'Bad Valentines' } = Astro.props;
+import Nav from '../components/Nav.astro';
+const { title = 'Bad Valentines', nav = 'page' } = Astro.props;
 ---
 <html lang="en">
   <head>
@@ -12,6 +13,7 @@ const { title = 'Bad Valentines' } = Astro.props;
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
+    <Nav type={nav} />
     <slot />
   </body>
 </html>
