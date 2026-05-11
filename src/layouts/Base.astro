@@ -13,7 +13,7 @@ const { title = 'Bad Valentines', nav = 'page' } = Astro.props;
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <Nav type={nav} />
+    {nav === 'page' && <Nav type="page" />}
     <slot />
   </body>
 </html>
