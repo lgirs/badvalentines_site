@@ -1,0 +1,28 @@
+:root {
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-text: #f5f5f5;
+  --color-accent: #ffffff;
+  --color-muted: #888888;
+  --color-border: #222222;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Special Elite', serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 2rem;
+  --text-2xl: 3.5rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
