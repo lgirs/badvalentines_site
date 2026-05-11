@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Bad Valentines — Gigs">
+  <style>
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-lg);
+    }
+    h1 {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      color: var(--color-accent);
+      margin-bottom: var(--space-xl);
+    }
+    #gigs-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .gig-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .gig-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .gig-date {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--color-accent);
+      letter-spacing: 0.08em;
+    }
+    .gig-venue {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      letter-spacing: 0.05em;
+    }
+    .gig-location {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+    .gig-ticket {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      letter-spacing: 0.08em;
+      color: var(--color-bg);
+      background: var(--color-accent);
+      padding: var(--space-sm) var(--space-md);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .gig-ticket:hover {
+      opacity: 0.8;
+    }
+    .gig-ticket.no-ticket {
+      background: transparent;
+      color: var(--color-muted);
+      border: 1px solid var(--color-border);
+      cursor: default;
+    }
+    .no-gigs {
+      font-family: var(--font-body);
+      color: var(--color-muted);
+    }
+    .loading {
+      font-family: var(--font-body);
+      color: var(--color-muted);
+    }
+  </style>
+  <main>
+    <h1>Gigs</h1>
+    <div id="gigs-list">
+      <p class="loading">Loading upcoming shows...</p>
+    </div>
+  </main>
+
+  <script>
+    const ARTIST_ID = '15630467';
+    const APP_ID = 'badvalentines-site';
+
+    async function loadGigs() {
+      const container = document.getElementById('gigs-list');
+      try {
+        const res = await fetch(
+          `https://rest.bandsintown.com/artists/id_${ARTIST_ID}/events?app_id=${APP_ID}&date=upcoming`
+        );
+        const events = await res.json();
+
+        if (!Array.isArray(events) || events.length === 0) {
+          container.innerHTML = '<p class="no-gigs">No upcoming shows at the moment. Check back soon.</p>';
+          return;
+        }
+
+        container.innerHTML = events.map(event => {
+          const date = new Date(event.datetime);
+          const formattedDate = date.toLocaleDateString('en-GB', {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+          const venue = event.venue?.name || '';
+          const city = event.venue?.city || '';
+          const country = event.venue?.country || '';
+          const ticketUrl = event.offers?.[0]?.url || '';
+
+          return `
+            <div class="gig-item">
+              <div class="gig-info">
+                <span class="gig-date">${formattedDate}</span>
+                <span class="gig-venue">${venue}</span>
+                <span class="gig-location">${city}${country ? ', ' + country : ''}</span>
+              </div>
+              ${ticketUrl
+                ? `<a class="gig-ticket" href="${ticketUrl}" target="_blank" rel="noopener noreferrer">Tickets</a>`
+                : `<span class="gig-ticket no-ticket">Free entry</span>`
+              }
+            </div>
+          `;
+        }).join('');
+
+      } catch (err) {
+        container.innerHTML = '<p class="no-gigs">Could not load shows right now. Try again later.</p>';
+      }
+    }
+
+    loadGigs();
+  </script>
+</Base>
