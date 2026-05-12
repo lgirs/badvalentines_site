@@ -24,7 +24,7 @@ const { type } = Astro.props;
 )}
 
 <style>
-  /* Home nav — below logo */
+  /* Home nav */
   .home-nav {
     display: flex;
     justify-content: center;
@@ -41,11 +41,11 @@ const { type } = Astro.props;
     transition: color 0.2s, border-color 0.2s;
   }
   .home-nav a:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
+    color: var(--color-highlight);
+    border-color: var(--color-highlight);
   }
 
-  /* Page nav — top bar */
+  /* Page nav */
   .page-nav {
     border-bottom: 1px solid var(--color-border);
     padding: var(--space-md) var(--space-lg);
@@ -66,7 +66,7 @@ const { type } = Astro.props;
     transition: color 0.2s;
   }
   .page-nav-home:hover {
-    color: var(--color-accent);
+    color: var(--color-highlight);
   }
   .page-nav-links {
     display: flex;
@@ -82,7 +82,7 @@ const { type } = Astro.props;
     transition: color 0.2s, border-color 0.2s;
   }
   .page-nav-links a:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
+    color: var(--color-highlight);
+    border-color: var(--color-highlight);
   }
 </style>
