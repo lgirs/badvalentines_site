@@ -14,7 +14,7 @@ import Base from '../layouts/Base.astro';
       color: var(--color-accent);
       margin-bottom: var(--space-xl);
     }
-    #gigs-list {
+    .gig-list {
       display: flex;
       flex-direction: column;
       gap: var(--space-md);
@@ -50,92 +50,37 @@ import Base from '../layouts/Base.astro';
       font-size: var(--text-sm);
       color: var(--color-muted);
     }
-    .gig-ticket {
+    .gig-tag {
       font-family: var(--font-heading);
       font-size: var(--text-base);
       letter-spacing: 0.08em;
-      color: var(--color-bg);
-      background: var(--color-accent);
       padding: var(--space-sm) var(--space-md);
-      text-decoration: none;
       white-space: nowrap;
-      transition: opacity 0.2s;
-    }
-    .gig-ticket:hover {
-      opacity: 0.8;
-    }
-    .gig-ticket.no-ticket {
-      background: transparent;
       color: var(--color-muted);
       border: 1px solid var(--color-border);
-      cursor: default;
-    }
-    .no-gigs {
-      font-family: var(--font-body);
-      color: var(--color-muted);
-    }
-    .loading {
-      font-family: var(--font-body);
-      color: var(--color-muted);
     }
   </style>
   <main>
     <h1>Gigs</h1>
-    <div id="gigs-list">
-      <p class="loading">Loading upcoming shows...</p>
+    <div class="gig-list">
+
+      <div class="gig-item">
+        <div class="gig-info">
+          <span class="gig-date">Wed 3 June 2025</span>
+          <span class="gig-venue">Käpygrilli</span>
+          <span class="gig-location">Helsinki</span>
+        </div>
+      </div>
+
+      <div class="gig-item">
+        <div class="gig-info">
+          <span class="gig-date">Sat 3 October 2025</span>
+          <span class="gig-venue">TBA</span>
+          <span class="gig-location">Helsinki</span>
+        </div>
+        <span class="gig-tag">Details soon</span>
+      </div>
+
     </div>
   </main>
-
-  <script>
-    const ARTIST_ID = '15630467';
-    const APP_ID = 'badvalentines-site';
-
-    async function loadGigs() {
-      const container = document.getElementById('gigs-list');
-      try {
-        const res = await fetch(
-          `https://rest.bandsintown.com/artists/id_${ARTIST_ID}/events?app_id=${APP_ID}&date=upcoming`
-        );
-        const events = await res.json();
-
-        if (!Array.isArray(events) || events.length === 0) {
-          container.innerHTML = '<p class="no-gigs">No upcoming shows at the moment. Check back soon.</p>';
-          return;
-        }
-
-        container.innerHTML = events.map(event => {
-          const date = new Date(event.datetime);
-          const formattedDate = date.toLocaleDateString('en-GB', {
-            weekday: 'short',
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-          });
-          const venue = event.venue?.name || '';
-          const city = event.venue?.city || '';
-          const country = event.venue?.country || '';
-          const ticketUrl = event.offers?.[0]?.url || '';
-
-          return `
-            <div class="gig-item">
-              <div class="gig-info">
-                <span class="gig-date">${formattedDate}</span>
-                <span class="gig-venue">${venue}</span>
-                <span class="gig-location">${city}${country ? ', ' + country : ''}</span>
-              </div>
-              ${ticketUrl
-                ? `<a class="gig-ticket" href="${ticketUrl}" target="_blank" rel="noopener noreferrer">Tickets</a>`
-                : `<span class="gig-ticket no-ticket">Free entry</span>`
-              }
-            </div>
-          `;
-        }).join('');
-
-      } catch (err) {
-        container.innerHTML = '<p class="no-gigs">Could not load shows right now. Try again later.</p>';
-      }
-    }
-
-    loadGigs();
-  </script>
 </Base>
