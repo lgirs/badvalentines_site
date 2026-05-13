@@ -14,15 +14,26 @@ import Nav from '../components/Nav.astro';
     a.logo-link {
       display: block;
     }
-    img {
+    .logo {
       max-width: 480px;
       width: 90%;
+    }
+    .band-photo {
+      width: 100%;
+      max-width: 900px;
+      margin-top: var(--space-xl);
+      display: block;
     }
   </style>
   <div class="hero">
     <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
-      <img src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
+      <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
     </a>
     <Nav type="home" />
+    <img
+      class="band-photo"
+      src="/images/IMG_1131_retouch_smaller.jpg"
+      alt="Bad Valentines band photo"
+    />
   </div>
 </Base>
