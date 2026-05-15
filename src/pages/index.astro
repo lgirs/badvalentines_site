@@ -74,11 +74,14 @@ import Base from '../layouts/Base.astro';
         grid-template-columns: 1fr;
       }
       .band-photo {
-        height: 60vw;
+        height: auto;
+        max-height: 70vw;
+        object-position: center top;
       }
       .right {
         min-height: unset;
         gap: var(--space-xl);
+        padding: var(--space-lg);
       }
     }
   </style>
