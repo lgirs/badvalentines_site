@@ -1,39 +1,109 @@
 ---
 import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
 ---
 <Base title="Bad Valentines" nav="home">
   <style>
-    .hero {
+    .page {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      padding: var(--space-xl) var(--space-lg);
     }
-    a.logo-link {
+
+    /* Logo */
+    .logo-link {
       display: block;
+      margin-bottom: var(--space-xl);
     }
     .logo {
       max-width: 480px;
       width: 90%;
     }
+
+    /* Two column layout */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      max-width: 900px;
+      width: 100%;
+      align-items: start;
+    }
+
+    /* Band photo */
     .band-photo {
       width: 100%;
-      max-width: 900px;
-      margin-top: var(--space-xl);
       display: block;
     }
+
+    /* Gigs */
+    .gigs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      padding-top: var(--space-sm);
+    }
+    .gigs-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      color: var(--color-accent);
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-md);
+    }
+    .gig {
+      border-left: 2px solid var(--color-highlight);
+      padding-left: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .gig-date {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--color-text);
+      letter-spacing: 0.06em;
+    }
+    .gig-place {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
-  <div class="hero">
+
+  <div class="page">
     <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
       <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
     </a>
-    <Nav type="home" />
-    <img
-      class="band-photo"
-      src="/images/IMG_1131_retouch_smaller.jpg"
-      alt="Bad Valentines band photo"
-    />
+
+    <div class="content">
+      <img
+        class="band-photo"
+        src="/images/badvalentines_bandpic1_hallway.jpeg"
+        alt="Bad Valentines"
+      />
+
+      <div class="gigs">
+        <p class="gigs-title">Gigs</p>
+
+        <div class="gig">
+          <span class="gig-date">Wed 3 June 2025</span>
+          <span class="gig-place">Käpygrilli, Helsinki</span>
+        </div>
+
+        <div class="gig">
+          <span class="gig-date">Sat 3 October 2025</span>
+          <span class="gig-place">TBA, Helsinki</span>
+        </div>
+      </div>
+    </div>
   </div>
+
 </Base>
