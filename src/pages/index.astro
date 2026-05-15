@@ -5,36 +5,35 @@ import Base from '../layouts/Base.astro';
   <style>
     .page {
       min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Left — full height band photo */
+    .band-photo {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Right — split into logo top, gigs bottom */
+    .right {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: var(--space-xl) var(--space-lg);
+      justify-content: space-between;
+      padding: var(--space-xl) var(--space-xl);
+      min-height: 100vh;
     }
 
     /* Logo */
     .logo-link {
       display: block;
-      margin-bottom: var(--space-xl);
     }
     .logo {
-      max-width: 480px;
-      width: 90%;
-    }
-
-    /* Two column layout */
-    .content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-xl);
-      max-width: 900px;
+      max-width: 280px;
       width: 100%;
-      align-items: start;
-    }
-
-    /* Band photo */
-    .band-photo {
-      width: 100%;
-      display: block;
     }
 
     /* Gigs */
@@ -42,7 +41,6 @@ import Base from '../layouts/Base.astro';
       display: flex;
       flex-direction: column;
       gap: var(--space-lg);
-      padding-top: var(--space-sm);
     }
     .gigs-title {
       font-family: var(--font-heading);
@@ -72,37 +70,42 @@ import Base from '../layouts/Base.astro';
 
     /* Mobile */
     @media (max-width: 600px) {
-      .content {
+      .page {
         grid-template-columns: 1fr;
+      }
+      .band-photo {
+        height: 60vw;
+      }
+      .right {
+        min-height: unset;
+        gap: var(--space-xl);
       }
     }
   </style>
 
   <div class="page">
-    <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
-      <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
-    </a>
+    <img
+      class="band-photo"
+      src="/images/badvalentines_bandpic1_hallway.jpeg"
+      alt="Bad Valentines"
+    />
 
-    <div class="content">
-      <img
-        class="band-photo"
-        src="/images/badvalentines_bandpic1_hallway.jpeg"
-        alt="Bad Valentines"
-      />
+    <div class="right">
+      <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
+        <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
+      </a>
 
       <div class="gigs">
         <p class="gigs-title">Gigs</p>
-
         <div class="gig">
           <span class="gig-date">Wed 3 June 2026</span>
           <span class="gig-place">Käpygrilli, Helsinki</span>
         </div>
-
         <div class="gig">
           <span class="gig-date">Sat 3 October 2026</span>
           <span class="gig-place">TBA, Helsinki</span>
         </div>
-         <div class="gig">
+        <div class="gig">
           <span class="gig-date">Fri 9 October 2026</span>
           <span class="gig-place">TBA, Tampere</span>
         </div>
