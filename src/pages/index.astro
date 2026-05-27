@@ -55,6 +55,8 @@ import Base from '../layouts/Base.astro';
       display: flex;
       flex-direction: column;
       gap: 4px;
+      text-decoration: none;
+}
     }
     .gig-date {
       font-family: var(--font-heading);
@@ -98,19 +100,17 @@ import Base from '../layouts/Base.astro';
         <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
       </a>
 
-      <div class="gigs">
-        <p class="gigs-title">Gigs</p>
-        <div class="gig">
-          <span class="gig-date">Wed 3 June 2026</span>
-          <span class="gig-place">Käpygrilli, Helsinki</span>
-        </div>
+        <a class="gig" href="https://fb.me/e/fLHu3VVmC" target="_blank" rel="noopener noreferrer">
+            <span class="gig-date">Wed 3 June 2026</span>
+            <span class="gig-place">Käpygrilli, Helsinki, with Muovi Makkonen, Alt and Kaisa Koo</span>
+        </a>
         <div class="gig">
           <span class="gig-date">Sat 3 October 2026</span>
-          <span class="gig-place">TBA, Helsinki</span>
+          <span class="gig-place">Kuudes linja, Helsinki, with Repo Woman and Säädöt</span>
         </div>
         <div class="gig">
           <span class="gig-date">Fri 9 October 2026</span>
-          <span class="gig-place">TBA, Tampere</span>
+          <span class="gig-place">Maanalainen, Tampere, with Repo Woman and Potkut</span>
         </div>
       </div>
     </div>
