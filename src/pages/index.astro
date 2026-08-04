@@ -84,6 +84,47 @@ import Base from '../layouts/Base.astro';
         padding: var(--space-lg);
       }
     }
+    .instagram {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-xl) var(--space-xl);
+    }
+    .instagram-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .instagram-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .instagram-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      color: var(--color-accent);
+      letter-spacing: 0.08em;
+    }
+    .instagram-link {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-highlight);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .instagram-link:hover {
+      text-decoration: underline;
+    }
+    .instagram-widget {
+      width: 100%;
+    }
+    @media (max-width: 600px) {
+      .instagram {
+        padding: var(--space-lg);
+      }
+    }
   </style>
 
   <div class="page">
@@ -112,24 +153,25 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
   </div>
-.instagram-widget {
-      width: 100%;
-    }
-    ...
-      <!--
-        Powered by Elfsight (https://elfsight.com) — free plan, no backend required
-        (1 widget, up to 200 views/month, no credit card).
-        To go live:
-          1. Go to elfsight.com, create a free account, and add the
-             "Instagram Feed" app
-          2. Connect the @badvalentinesband Instagram account and pick a
-             grid layout
-          3. Click "Add to website" and copy the two pieces it gives you:
-             a <script> tag and a <div class="elfsight-app-..."> tag
-          4. Replace the script src and div class below with your own
-      -->
+
+  <section class="instagram">
+    <div class="instagram-inner">
+      <div class="instagram-header">
+        <span class="instagram-title">On Instagram</span>
+        <a
+          class="instagram-link"
+          href="https://www.instagram.com/badvalentinesband/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @badvalentinesband ↗
+        </a>
+      </div>
       <div class="instagram-widget">
-<div class="elfsight-app-6a1b7a2f-c8f1-48e2-8efe-e51ed3c998e6" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-6a1b7a2f-c8f1-48e2-8efe-e51ed3c998e6" data-elfsight-app-lazy></div>
       </div>
       <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    </div>
+  </section>
+
 </Base>
