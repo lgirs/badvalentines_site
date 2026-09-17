@@ -24,25 +24,19 @@ const gigs = [
 ---
 <Base title="Bad Valentines" nav="home">
   <style>
-    .page {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
     .hero-image {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: var(--space-md);
-      min-height: 100vh;
       background: var(--color-bg);
-      padding: var(--space-xl);
+      padding: var(--space-xl) var(--space-xl) var(--space-lg);
     }
     .hero-image-link {
       display: block;
       width: 100%;
-      max-width: 520px;
+      max-width: 560px;
     }
     .band-photo {
       width: 100%;
@@ -60,12 +54,16 @@ const gigs = [
     .presave-link:hover {
       text-decoration: underline;
     }
-    .right {
+    .below-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-xl);
+      padding: var(--space-lg) var(--space-xl) var(--space-xl);
+    }
+    .logo-col {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: var(--space-xl) var(--space-xl);
-      min-height: 100vh;
+      justify-content: center;
     }
     .logo-link {
       display: block;
@@ -127,15 +125,11 @@ const gigs = [
       color: var(--color-highlight);
     }
     @media (max-width: 600px) {
-      .page {
-        grid-template-columns: 1fr;
-      }
       .hero-image {
-        min-height: unset;
         padding: var(--space-lg);
       }
-      .right {
-        min-height: unset;
+      .below-hero {
+        grid-template-columns: 1fr;
         gap: var(--space-xl);
         padding: var(--space-lg);
       }
@@ -216,51 +210,52 @@ const gigs = [
     }
   </style>
 
-  <div class="page">
-    <div class="hero-image">
-      <a
-        class="hero-image-link"
-        href={preSaveUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          class="band-photo"
-          src="/images/novshadowns__coveradd.jpeg"
-          alt="Bad Valentines – November Shadows, out 02.10.2026"
-        />
-      </a>
-      <a
-        class="presave-link"
-        href={preSaveUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Pre-save on Spotify ↗
-      </a>
-    </div>
-    <div class="right">
+  <div class="hero-image">
+    <a
+      class="hero-image-link"
+      href={preSaveUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="band-photo"
+        src="/images/novshadowns__coveradd.jpeg"
+        alt="Bad Valentines – November Shadows, out 02.10.2026"
+      />
+    </a>
+    <a
+      class="presave-link"
+      href={preSaveUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Pre-save on Spotify ↗
+    </a>
+  </div>
+
+  <div class="below-hero">
+    <div class="logo-col">
       <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
         <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
       </a>
-      <div class="gigs">
-        {gigs.map((gig) => (
-          <div class="gig">
-            <span class="gig-date">{gig.date}</span>
-            <span class="gig-place">{gig.place}</span>
-            {gig.ticketUrl && (
-              <a
-                class="gig-tickets"
-                href={gig.ticketUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Tickets ↗
-              </a>
-            )}
-          </div>
-        ))}
-      </div>
+    </div>
+    <div class="gigs">
+      {gigs.map((gig) => (
+        <div class="gig">
+          <span class="gig-date">{gig.date}</span>
+          <span class="gig-place">{gig.place}</span>
+          {gig.ticketUrl && (
+            <a
+              class="gig-tickets"
+              href={gig.ticketUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Tickets ↗
+            </a>
+          )}
+        </div>
+      ))}
     </div>
   </div>
 
