@@ -1,5 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// TODO: replace with the live Spotify pre-save link once available
+const preSaveUrl = "#";
+
+const gigs = [
+  {
+    date: "Sat 3 October 2026",
+    place: "Kuudes linja, Helsinki, with Repo Woman and Säädöt",
+    ticketUrl: "https://www.tiketti.fi/repo-woman-saadot-bad-valentines-kuudes-linja-helsinki-tickets/119823",
+  },
+  {
+    date: "Fri 9 October 2026",
+    place: "Maanalainen, Tampere, with Repo Woman and Potkut",
+    ticketUrl: null,
+  },
+  {
+    date: "Fri 5 March 2027",
+    place: "Helsinki",
+    ticketUrl: null,
+  },
+];
 ---
 <Base title="Bad Valentines" nav="home">
   <style>
@@ -8,12 +29,36 @@ import Base from '../layouts/Base.astro';
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
+    .hero-image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      min-height: 100vh;
+      background: var(--color-bg);
+      padding: var(--space-xl);
+    }
+    .hero-image-link {
+      display: block;
+      width: 100%;
+      max-width: 520px;
+    }
     .band-photo {
       width: 100%;
-      height: 100vh;
-      object-fit: cover;
-      object-position: center;
+      height: auto;
+      object-fit: contain;
       display: block;
+    }
+    .presave-link {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-highlight);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .presave-link:hover {
+      text-decoration: underline;
     }
     .right {
       display: flex;
@@ -60,6 +105,18 @@ import Base from '../layouts/Base.astro';
       font-size: var(--text-sm);
       color: var(--color-muted);
     }
+    .gig-tickets {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-highlight);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .gig-tickets:hover {
+      text-decoration: underline;
+    }
     a.gig .gig-date {
       color: var(--color-text);
     }
@@ -73,10 +130,9 @@ import Base from '../layouts/Base.astro';
       .page {
         grid-template-columns: 1fr;
       }
-      .band-photo {
-        height: auto;
-        max-height: 70vw;
-        object-position: center top;
+      .hero-image {
+        min-height: unset;
+        padding: var(--space-lg);
       }
       .right {
         min-height: unset;
@@ -161,28 +217,49 @@ import Base from '../layouts/Base.astro';
   </style>
 
   <div class="page">
-    <img
-      class="band-photo"
-      src="/images/badvalentines_bandpic1_hallway.jpeg"
-      alt="Bad Valentines"
-    />
+    <div class="hero-image">
+      <a
+        class="hero-image-link"
+        href={preSaveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="band-photo"
+          src="/images/novshadowns__coveradd.jpeg"
+          alt="Bad Valentines – November Shadows, out 02.10.2026"
+        />
+      </a>
+      <a
+        class="presave-link"
+        href={preSaveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Pre-save on Spotify ↗
+      </a>
+    </div>
     <div class="right">
       <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
         <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
       </a>
       <div class="gigs">
-        <div class="gig">
-          <span class="gig-date">Sat 3 October 2026</span>
-          <span class="gig-place">Kuudes linja, Helsinki, with Repo Woman and Säädöt</span>
-        </div>
-        <div class="gig">
-          <span class="gig-date">Fri 9 October 2026</span>
-          <span class="gig-place">Maanalainen, Tampere, with Repo Woman and Potkut</span>
-        </div>
-        <div class="gig">
-          <span class="gig-date">Fri 5 March 2027</span>
-          <span class="gig-place">Helsinki</span>
-        </div>
+        {gigs.map((gig) => (
+          <div class="gig">
+            <span class="gig-date">{gig.date}</span>
+            <span class="gig-place">{gig.place}</span>
+            {gig.ticketUrl && (
+              <a
+                class="gig-tickets"
+                href={gig.ticketUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Tickets ↗
+              </a>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </div>
