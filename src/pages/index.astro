@@ -1,8 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 
-// TODO: replace with the live Spotify pre-save link once available
-const preSaveUrl = "#";
+const preSaveUrl = "https://orcd.co/pre_sina_hetkena-november_shadows";
 
 const gigs = [
   {
@@ -44,15 +43,20 @@ const gigs = [
       object-fit: contain;
       display: block;
     }
-    .presave-link {
+    .hero-caption {
       font-family: var(--font-body);
       font-size: var(--text-sm);
-      color: var(--color-highlight);
-      text-decoration: none;
-      letter-spacing: 0.02em;
+      color: var(--color-text);
+      text-align: center;
+      max-width: 560px;
+      line-height: 1.5;
     }
-    .presave-link:hover {
+    .hero-caption a {
+      color: var(--color-text);
       text-decoration: underline;
+    }
+    .hero-caption a:hover {
+      color: var(--color-highlight);
     }
     .below-hero {
       display: grid;
@@ -223,13 +227,9 @@ const gigs = [
         alt="Bad Valentines – November Shadows, out 02.10.2026"
       />
     </a>
-    <a
-      class="presave-link"
-      href={preSaveUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Pre-save links coming soon!</a>
+    <p class="hero-caption">
+      Pre-save the single <a href={preSaveUrl} target="_blank" rel="noopener noreferrer">here</a> and come see us play live soon!
+    </p>
   </div>
 
   <div class="below-hero">
