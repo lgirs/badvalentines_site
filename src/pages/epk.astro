@@ -1,0 +1,379 @@
+---
+import Base from '../layouts/Base.astro';
+
+const members = [
+  { name: "Hon", role: "Vocals" },
+  { name: "Sirpa Immonen", role: "Drums" },
+  { name: "Lasse Girs", role: "Bass" },
+  { name: "Kupe Wessman", role: "Guitar" },
+  { name: "Pekko Mantzin", role: "Guitar" },
+];
+
+const reviews = [
+  {
+    quote: "This Finnish five piece just dropped this issue's best EP with the four track 'Memory Tattoos.'",
+    source: "Eugene Butcher, Vive Le Rock, issue #122, 2025",
+    score: "9/10",
+  },
+  {
+    quote: "A highly recommended listen.",
+    source: "realgonerocks.com",
+  },
+  {
+    quote: "One minute you're lost in a 60s pop-inflected melody that could almost be playing from a transistor radio in a dream, the next, a guitar riff cuts through like a shard of glass, demanding your attention.",
+    source: "Chris The Blogger, musicarenagh.com",
+  },
+  {
+    quote: "Best of all, while the message that drives the song is poignant and, sadly, more relevant than ever, the song never goes down a dark and earnest route, a trap that too many rock bands fall into.",
+    source: "Dave Franklin, The Big Takeover",
+  },
+];
+
+const downloads = [
+  { label: "Bio (PDF)", href: "/docs/epk/bad-valentines-bio.pdf" },
+  { label: "Press release (PDF)", href: "/docs/epk/november-shadows-press-release.pdf" },
+  { label: "Band photo, horizontal (JPG)", href: "/images/epk/band-photo-horizontal.jpg" },
+  { label: "Band photo, vertical (JPG)", href: "/images/epk/band-photo-vertical.jpg" },
+  { label: "Single cover art (JPG)", href: "/images/epk/november-shadows-cover.jpg" },
+  { label: "Logo, flat (JPG)", href: "/images/epk/logo-flat.jpg" },
+  { label: "Logo, stacked (JPG)", href: "/images/epk/logo-stacked.jpg" },
+  { label: "November Shadows (WAV)", href: "/audio/epk/november-shadows.wav" },
+  { label: "November Shadows (MP3)", href: "/audio/epk/november-shadows.mp3" },
+];
+---
+<Base title="Bad Valentines – November Shadows EPK" nav="epk">
+  <style>
+    .epk-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: var(--color-bg);
+      padding: var(--space-xl) var(--space-xl) var(--space-lg);
+      text-align: center;
+    }
+    .epk-cover {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      border: 1px solid var(--color-border);
+    }
+    .epk-kicker {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--color-highlight);
+    }
+    .epk-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      letter-spacing: 0.04em;
+      color: var(--color-accent);
+      line-height: 1;
+    }
+    .epk-subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      max-width: 480px;
+    }
+
+    .epk-section {
+      padding: var(--space-xl);
+      border-top: 1px solid var(--color-border);
+    }
+    .epk-section-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .epk-section-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      color: var(--color-accent);
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-lg);
+    }
+
+    .listen-section {
+      background: var(--color-surface);
+    }
+    .listen-note {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      color: var(--color-highlight);
+      letter-spacing: 0.03em;
+      margin-bottom: var(--space-md);
+    }
+    audio {
+      width: 100%;
+      margin-bottom: var(--space-md);
+    }
+    .listen-links {
+      display: flex;
+      gap: var(--space-lg);
+    }
+    .listen-links a {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-highlight);
+      text-decoration: none;
+    }
+    .listen-links a:hover {
+      text-decoration: underline;
+    }
+
+    .epk-body p {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+    }
+    .epk-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quotes {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .quote {
+      border-left: 2px solid var(--color-highlight);
+      padding-left: var(--space-md);
+    }
+    .quote-text {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+    .quote-source {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+    .quote-score {
+      color: var(--color-highlight);
+    }
+
+    .pull-quote {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: var(--text-lg);
+      line-height: 1.6;
+      color: var(--color-accent);
+      border-left: 2px solid var(--color-highlight);
+      padding-left: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    .pull-quote-source {
+      display: block;
+      margin-top: var(--space-sm);
+      font-style: normal;
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+
+    .lineup {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-md);
+    }
+    .lineup-member {
+      border-left: 2px solid var(--color-highlight);
+      padding-left: var(--space-md);
+    }
+    .lineup-name {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      letter-spacing: 0.05em;
+      color: var(--color-text);
+      display: block;
+    }
+    .lineup-role {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+
+    .photos-section {
+      background: var(--color-surface);
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+    .photo-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--color-border);
+    }
+    .photo-credit {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      margin-top: var(--space-md);
+    }
+
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm) var(--space-lg);
+    }
+    .download-link {
+      display: block;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      text-decoration: none;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .download-link:hover {
+      color: var(--color-highlight);
+    }
+
+    .epk-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      justify-content: center;
+    }
+    .epk-links a {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-highlight);
+      text-decoration: none;
+    }
+    .epk-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .epk-hero { padding: var(--space-lg); }
+      .epk-section { padding: var(--space-lg); }
+      .photo-grid { grid-template-columns: 1fr; }
+      .downloads-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <div class="epk-hero">
+    <span class="epk-kicker">Electronic Press Kit</span>
+    <img
+      class="epk-cover"
+      src="/images/epk/november-shadows-cover.jpg"
+      alt="Bad Valentines – November Shadows single cover"
+    />
+    <h1 class="epk-title">November Shadows</h1>
+    <p class="epk-subtitle">New single by Bad Valentines, out Friday 2 October 2026. Debut album follows in 2027.</p>
+  </div>
+
+  <section class="epk-section listen-section">
+    <div class="epk-section-inner">
+      <p class="listen-note">Advance listening — for media use</p>
+      <audio controls preload="none" src="/audio/epk/november-shadows.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="listen-links">
+        <a href="/audio/epk/november-shadows.wav" download>Download WAV</a>
+        <a href="/audio/epk/november-shadows.mp3" download>Download MP3</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="epk-section">
+    <div class="epk-section-inner">
+      <h2 class="epk-section-title">About the single</h2>
+      <div class="epk-body">
+        <p>Helsinki rockers Bad Valentines return with their new single "November Shadows," following their 2025 EP Memory Tattoos.</p>
+        <p>What began as an early blues-based version of the song eventually evolved into a faster, hard-driving blend of Motown and rock'n'roll. Set against an autumnal urban landscape, "November Shadows" finds comfort in the darkness, with its shadows offering a constant companion to the loneliness of the mind.</p>
+      </div>
+      <blockquote class="pull-quote">
+        "Shadows can be friends. There's no need to avoid them or run away from them."
+        <span class="pull-quote-source">— Pekko Mantzin, guitarist and songwriter</span>
+      </blockquote>
+      <div class="epk-body">
+        <p>"November Shadows" is the first release from Bad Valentines' upcoming debut album, currently in the mixing stage. The band began recording the album in spring 2026, laying down 11 tracks in total. The album is scheduled for release in 2027.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="epk-section">
+    <div class="epk-section-inner">
+      <h2 class="epk-section-title">Bio</h2>
+      <div class="epk-body">
+        <p>Bad Valentines are Helsinki rockers who owe a few pints to the British and American punk rock pioneers and 1970's arena rock acts, as well as the masters of 1960's pop rock.</p>
+        <p>Defiant and uncompromising, they've concocted a potent brew of life, love and courage that conveys the sign of these times.</p>
+        <p>Most members of Bad Valentines are long timers of the Finnish indie music scene and have previously made names for themselves in acts including Daggerplay, Plastic Tears and Flush.</p>
+        <p>Bad Valentines recorded their first EP, "Memory Tattoos," with producer Petri Majuri, who has previously worked with Franz Ferdinand, Michael Monroe and Hanoi Rocks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="epk-section">
+    <div class="epk-section-inner">
+      <h2 class="epk-section-title">Press on Memory Tattoos</h2>
+      <div class="quotes">
+        {reviews.map((r) => (
+          <div class="quote">
+            <p class="quote-text">"{r.quote}"{r.score && <span class="quote-score"> — {r.score}</span>}</p>
+            <p class="quote-source">{r.source}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="epk-section">
+    <div class="epk-section-inner">
+      <h2 class="epk-section-title">Lineup</h2>
+      <div class="lineup">
+        {members.map((m) => (
+          <div class="lineup-member">
+            <span class="lineup-name">{m.name}</span>
+            <span class="lineup-role">{m.role}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="epk-section photos-section">
+    <div class="epk-section-inner">
+      <h2 class="epk-section-title">Photos</h2>
+      <div class="photo-grid">
+        <img src="/images/epk/band-photo-horizontal.jpg" alt="Bad Valentines band photo" />
+        <img src="/images/epk/band-photo-vertical.jpg" alt="Bad Valentines band photo" />
+      </div>
+      <p class="photo-credit">Photos: Sonja Vainionpää</p>
+    </div>
+  </section>
+
+  <section class="epk-section">
+    <div class="epk-section-inner">
+      <h2 class="epk-section-title">Download kit</h2>
+      <div class="downloads-grid">
+        {downloads.map((d) => (
+          <a class="download-link" href={d.href} download>{d.label} ↓</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="epk-section">
+    <div class="epk-section-inner">
+      <div class="epk-links">
+        <a href="https://badvalentines.com" target="_blank" rel="noopener noreferrer">badvalentines.com ↗</a>
+        <a href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">All links (Linktree) ↗</a>
+        <a href="https://www.instagram.com/badvalentinesband/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
