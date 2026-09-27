@@ -34,15 +34,15 @@ const wavDriveUrl = "https://drive.google.com/file/d/1EQHXPhKj9b3DbVW5vIt7ARVlXI
 const mediaEmail = "media@badvalentines.com";
 
 const downloads = [
-  { label: "Bio (PDF)", href: "/docs/epk/bad-valentines-bio.pdf" },
-  { label: "Press release (PDF)", href: "/docs/epk/november-shadows-press-release.pdf" },
-  { label: "Band photo, horizontal (JPG)", href: "/images/epk/band-photo-horizontal.jpg" },
-  { label: "Band photo, vertical (JPG)", href: "/images/epk/band-photo-vertical.jpg" },
-  { label: "Single cover art (JPG)", href: "/images/epk/november-shadows-cover.jpg" },
-  { label: "Logo, flat (JPG)", href: "/images/epk/logo-flat.jpg" },
-  { label: "Logo, stacked (JPG)", href: "/images/epk/logo-stacked.jpg" },
-  { label: "November Shadows (MP3)", href: mp3Path },
-  { label: "November Shadows (WAV, Google Drive)", href: wavDriveUrl, external: true },
+  { label: "Bio (PDF)", href: "/docs/epk/bad-valentines-bio.pdf", click: "download-bio-pdf" },
+  { label: "Press release (PDF)", href: "/docs/epk/november-shadows-press-release.pdf", click: "download-press-release-pdf" },
+  { label: "Band photo, horizontal (JPG)", href: "/images/epk/band-photo-horizontal.jpg", click: "download-photo-horizontal" },
+  { label: "Band photo, vertical (JPG)", href: "/images/epk/band-photo-vertical.jpg", click: "download-photo-vertical" },
+  { label: "Single cover art (JPG)", href: "/images/epk/november-shadows-cover.jpg", click: "download-cover-art" },
+  { label: "Logo, flat (JPG)", href: "/images/epk/logo-flat.jpg", click: "download-logo-flat" },
+  { label: "Logo, stacked (JPG)", href: "/images/epk/logo-stacked.jpg", click: "download-logo-stacked" },
+  { label: "November Shadows (MP3)", href: mp3Path, click: "download-mp3" },
+  { label: "November Shadows (WAV, Google Drive)", href: wavDriveUrl, external: true, click: "download-wav-drive" },
 ];
 ---
 <Base title="Bad Valentines – November Shadows EPK" nav="epk">
@@ -305,8 +305,8 @@ const downloads = [
         Your browser does not support the audio element.
       </audio>
       <div class="listen-links">
-        <a href={mp3Path} download>Download MP3</a>
-        <a href={wavDriveUrl} target="_blank" rel="noopener noreferrer">WAV on Google Drive ↗</a>
+        <a href={mp3Path} download data-goatcounter-click="download-mp3-listen">Download MP3</a>
+        <a href={wavDriveUrl} target="_blank" rel="noopener noreferrer" data-goatcounter-click="download-wav-drive-listen">WAV on Google Drive ↗</a>
       </div>
     </div>
   </section>
@@ -385,9 +385,9 @@ const downloads = [
       <div class="downloads-grid">
         {downloads.map((d) => (
           d.external ? (
-            <a class="download-link" href={d.href} target="_blank" rel="noopener noreferrer">{d.label} ↗</a>
+            <a class="download-link" href={d.href} target="_blank" rel="noopener noreferrer" data-goatcounter-click={d.click}>{d.label} ↗</a>
           ) : (
-            <a class="download-link" href={d.href} download>{d.label} ↓</a>
+            <a class="download-link" href={d.href} download data-goatcounter-click={d.click}>{d.label} ↓</a>
           )
         ))}
       </div>
@@ -397,16 +397,16 @@ const downloads = [
   <section class="epk-section">
     <div class="epk-section-inner media-contact">
       <p class="media-contact-label">Press &amp; media contact</p>
-      <a class="media-contact-email" href={`mailto:${mediaEmail}`}>{mediaEmail}</a>
+      <a class="media-contact-email" href={`mailto:${mediaEmail}`} data-goatcounter-click="media-contact-email">{mediaEmail}</a>
     </div>
   </section>
 
   <section class="epk-section">
     <div class="epk-section-inner">
       <div class="epk-links">
-        <a href="https://badvalentines.com" target="_blank" rel="noopener noreferrer">badvalentines.com ↗</a>
-        <a href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">All links (Linktree) ↗</a>
-        <a href="https://www.instagram.com/badvalentinesband/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <a href="https://badvalentines.com" target="_blank" rel="noopener noreferrer" data-goatcounter-click="link-main-site">badvalentines.com ↗</a>
+        <a href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer" data-goatcounter-click="link-linktree">All links (Linktree) ↗</a>
+        <a href="https://www.instagram.com/badvalentinesband/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="link-instagram">Instagram ↗</a>
       </div>
     </div>
   </section>
