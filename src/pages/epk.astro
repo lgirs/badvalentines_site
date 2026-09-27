@@ -29,6 +29,10 @@ const reviews = [
   },
 ];
 
+const mp3Path = "/audio/epk/November%20Shadows%20audio%20-%20mp3.mp3";
+const wavDriveUrl = "https://drive.google.com/file/d/1EQHXPhKj9b3DbVW5vIt7ARVlXIvj6G6H/view?usp=drive_link";
+const mediaEmail = "media@badvalentines.com";
+
 const downloads = [
   { label: "Bio (PDF)", href: "/docs/epk/bad-valentines-bio.pdf" },
   { label: "Press release (PDF)", href: "/docs/epk/november-shadows-press-release.pdf" },
@@ -37,8 +41,8 @@ const downloads = [
   { label: "Single cover art (JPG)", href: "/images/epk/november-shadows-cover.jpg" },
   { label: "Logo, flat (JPG)", href: "/images/epk/logo-flat.jpg" },
   { label: "Logo, stacked (JPG)", href: "/images/epk/logo-stacked.jpg" },
-  { label: "November Shadows (WAV)", href: "/audio/epk/november-shadows.wav" },
-  { label: "November Shadows (MP3)", href: "/audio/epk/november-shadows.mp3" },
+  { label: "November Shadows (MP3)", href: mp3Path },
+  { label: "November Shadows (WAV, Google Drive)", href: wavDriveUrl, external: true },
 ];
 ---
 <Base title="Bad Valentines – November Shadows EPK" nav="epk">
@@ -255,6 +259,26 @@ const downloads = [
       text-decoration: underline;
     }
 
+    .media-contact {
+      text-align: center;
+    }
+    .media-contact-label {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      color: var(--color-muted);
+      margin-bottom: 4px;
+    }
+    .media-contact-email {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-highlight);
+      text-decoration: none;
+    }
+    .media-contact-email:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
       .epk-hero { padding: var(--space-lg); }
       .epk-section { padding: var(--space-lg); }
@@ -277,12 +301,12 @@ const downloads = [
   <section class="epk-section listen-section">
     <div class="epk-section-inner">
       <p class="listen-note">Advance listening — for media use</p>
-      <audio controls preload="none" src="/audio/epk/november-shadows.mp3">
+      <audio controls preload="none" src={mp3Path}>
         Your browser does not support the audio element.
       </audio>
       <div class="listen-links">
-        <a href="/audio/epk/november-shadows.wav" download>Download WAV</a>
-        <a href="/audio/epk/november-shadows.mp3" download>Download MP3</a>
+        <a href={mp3Path} download>Download MP3</a>
+        <a href={wavDriveUrl} target="_blank" rel="noopener noreferrer">WAV on Google Drive ↗</a>
       </div>
     </div>
   </section>
@@ -360,9 +384,20 @@ const downloads = [
       <h2 class="epk-section-title">Download kit</h2>
       <div class="downloads-grid">
         {downloads.map((d) => (
-          <a class="download-link" href={d.href} download>{d.label} ↓</a>
+          d.external ? (
+            <a class="download-link" href={d.href} target="_blank" rel="noopener noreferrer">{d.label} ↗</a>
+          ) : (
+            <a class="download-link" href={d.href} download>{d.label} ↓</a>
+          )
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="epk-section">
+    <div class="epk-section-inner media-contact">
+      <p class="media-contact-label">Press &amp; media contact</p>
+      <a class="media-contact-email" href={`mailto:${mediaEmail}`}>{mediaEmail}</a>
     </div>
   </section>
 
