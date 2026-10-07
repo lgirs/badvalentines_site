@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 
 const preSaveUrl = "https://orcd.co/pre_sina_hetkena-november_shadows";
+const reviewUrl = "https://karlismyunkle.com/2026/10/06/bad-valentines-explore-vulnerability-mental-health-acceptance-and-the-beauty-of-living-alongside-our-darker-sides-with-cinematic-new-single-november-shadows/";
 
 const gigs = [
   {
@@ -65,16 +66,46 @@ const gigs = [
       gap: var(--space-xl);
       padding: var(--space-lg) var(--space-xl) var(--space-xl);
     }
-    .logo-col {
+    .quote-col {
       display: flex;
       justify-content: center;
     }
-    .logo-link {
-      display: block;
+    .review {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      max-width: 420px;
     }
-    .logo {
-      max-width: 280px;
-      width: 100%;
+    .review-text {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--color-text);
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+    }
+    .review-source {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      border-left: 2px solid var(--color-highlight);
+      padding-left: var(--space-md);
+    }
+    .review-by {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+    .review-link {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-highlight);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      align-self: flex-start;
+    }
+    .review-link:hover {
+      text-decoration: underline;
     }
     .gigs {
       display: flex;
@@ -212,6 +243,21 @@ const gigs = [
         padding: var(--space-lg);
       }
     }
+    .site-footer {
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-lg) var(--space-xl);
+      text-align: center;
+    }
+    .site-footer a {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      text-decoration: underline;
+    }
+    .site-footer a:hover {
+      color: var(--color-highlight);
+    }
   </style>
 
   <div class="hero-image">
@@ -233,10 +279,23 @@ const gigs = [
   </div>
 
   <div class="below-hero">
-    <div class="logo-col">
-      <a class="logo-link" href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">
-        <img class="logo" src="/images/badvalentines_logo_fb.jpg" alt="Bad Valentines" />
-      </a>
+    <div class="quote-col">
+      <blockquote class="review">
+        <p class="review-text">
+          “The vocal harmonies are sublime and the high octane, minor key energy that transmutes feels cinematic, tapping into a high emotional quotient. There’s a power-pop sensibility at play.”
+        </p>
+        <footer class="review-source">
+          <span class="review-by">Karlis My Unkle</span>
+          <a
+            class="review-link"
+            href={reviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read the full review ↗
+          </a>
+        </footer>
+      </blockquote>
     </div>
     <div class="gigs">
       {gigs.map((gig) => (
@@ -301,5 +360,9 @@ const gigs = [
       <script src="https://static.elfsight.com/platform/platform.js" async></script>
     </div>
   </section>
+
+  <footer class="site-footer">
+    <a href="https://linktr.ee/badvalentinesband" target="_blank" rel="noopener noreferrer">More links here</a>
+  </footer>
 
 </Base>
