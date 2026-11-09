@@ -75,6 +75,20 @@ const gigs = [
       margin: 0 auto;
       padding: var(--space-lg) var(--space-xl) var(--space-xl);
     }
+    .all-reviews {
+      display: inline-block;
+      margin-top: var(--space-lg);
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      letter-spacing: 0.08em;
+      color: var(--color-text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-highlight);
+      transition: color 0.2s;
+    }
+    .all-reviews:hover {
+      color: var(--color-highlight);
+    }
     .quote-list {
       display: flex;
       flex-direction: column;
@@ -309,6 +323,7 @@ const gigs = [
           </blockquote>
         ))}
       </div>
+      <a class="all-reviews" href="/press">Read all reviews →</a>
     </div>
     <div class="gigs">
       <h2 class="gigs-title">Upcoming gigs</h2>

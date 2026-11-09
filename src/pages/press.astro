@@ -1,0 +1,229 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Press coverage, grouped by release. To add a new article, copy one { ... } line
+// into the right list. "quote" is optional — leave it out if there is no quote.
+const sections = [
+  {
+    title: "November Shadows",
+    subtitle: "Single, 2026",
+    articles: [
+      {
+        name: "Obscure Sound",
+        url: "https://www.obscuresound.com/2026/11/bad-valentines-november-shadows",
+        quote: "…A strongly melodic, energy-filled standout of a track…",
+        by: "Mike Mineo",
+      },
+      {
+        name: "Rattler Magazine",
+        url: "https://www.rattlermag.com/rattler-magazine/bad-valentines-november-shadows",
+        quote: "…Sometimes the best way to deal with the darkness is to turn up the guitars and dance right alongside it.",
+        by: "Jack Rush",
+      },
+      {
+        name: "No Transmission",
+        url: "https://notransmission.com/bad-valentines-find-company-in-the-dark-on-november-shadows",
+      },
+      {
+        name: "Hella Fuzz",
+        url: "https://hellafuzz.com/bad-valentines-november-shadows/",
+      },
+      {
+        name: "The Big Takeover",
+        url: "https://bigtakeover.com/recordings/bad-valentines-november-shadows-self-released",
+        quote: "…A song about isolation that rocks like a bastard and makes you want to hit the dance floor…",
+        by: "Dave Franklin",
+      },
+      {
+        name: "Indie Tapes",
+        url: "https://indie-tapes.com/post/830239881313861632/bad-valentines-november-shadows-indie-rock",
+      },
+      {
+        name: "Karl Is My Unkle",
+        url: "https://karlismyunkle.com/2026/10/06/bad-valentines-explore-vulnerability-mental-health-acceptance-and-the-beauty-of-living-alongside-our-darker-sides-with-cinematic-new-single-november-shadows/",
+      },
+    ],
+  },
+  {
+    title: "Memory Tattoos EP",
+    subtitle: "EP, 2025",
+    articles: [
+      {
+        name: "The Big Takeover",
+        url: "https://bigtakeover.com/recordings/bad-valentines-memory-tattoos-self-released",
+      },
+      {
+        name: "Indie Tapes",
+        url: "https://indie-tapes.com/post/783275152758784000/bad-valentines-memory-tattoos-indie-rock",
+      },
+      {
+        name: "Soundwave Music Media",
+        url: "https://www.soundwavemusicmedia.net/stories/2478161_bad-valentines-new-ep",
+      },
+      {
+        name: "KaaosZine (in Finnish)",
+        url: "https://kaaoszine.fi/napakka-esikois-ep-arviossa-bad-valentinesin-memory-tattoos/",
+      },
+      {
+        name: "Novacaine",
+        url: "https://www.novacaine.co.uk/post/bad-valentines-memory-tattoos",
+      },
+      {
+        name: "Thoughts Words Action",
+        url: "https://thoughtswordsaction.com/2025/05/08/bad-valentines-memory-tattoos-ep/",
+      },
+      {
+        name: "Add To Wantlist",
+        url: "https://addtowantlist.com/index.php/2025/05/15/new-ep-bad-valentines-memory-tattoos/",
+      },
+      {
+        name: "Edgar Allan Poets",
+        url: "https://www.edgarallanpoets.com/memory-tattoos-is-bad-valentines-ep-out-now/",
+      },
+      {
+        name: "Dancing About Architecture",
+        url: "https://dancing-about-architecture.com/memory-tattoos-bad-valentines-reviewed-by-dave-franklin/",
+      },
+      {
+        name: "The Ringmaster Review",
+        url: "https://ringmasterreviewintroduces.wordpress.com/2025/06/07/bad-valentines-memory-tattoos/",
+      },
+      {
+        name: "Real Gone Rocks",
+        url: "https://www.realgonerocks.com/2025/06/bad-valentines-memory-tattoos-ep/",
+      },
+      {
+        name: "Fifteen Minutes of Fame",
+        url: "https://fmofmusicentertainment.com/2025/09/19/182-fifteen-minutes-of-fame-spotlights-september-19th-edition/",
+      },
+      {
+        name: "Savoy Truffle Tunes",
+        url: "https://www.savoytruffletunes.com/reviews-main/bad-valentines-ink-their-arrival-with-masterful-debut-ep-memory-tattoos",
+      },
+      {
+        name: "Illustrate Magazine",
+        url: "https://illustratemagazine.com/memory-tattoos-by-bad-valentines-ep-review",
+      },
+      {
+        name: "Music News Monthly",
+        url: "https://www.musicnewsmonthly.com/bad-valentines-memory-tattoos.html",
+      },
+    ],
+  },
+];
+---
+<Base title="Bad Valentines — Press" nav="none">
+  <style>
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-lg);
+    }
+    .back {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      letter-spacing: 0.1em;
+      color: var(--color-muted);
+      text-decoration: none;
+      margin-bottom: var(--space-lg);
+      transition: color 0.2s;
+    }
+    .back:hover {
+      color: var(--color-highlight);
+    }
+    h1 {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: var(--space-xl);
+    }
+    .release {
+      margin-bottom: var(--space-xl);
+    }
+    .release-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      color: var(--color-accent);
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .release-subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      margin: var(--space-sm) 0 var(--space-lg);
+    }
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .article {
+      display: block;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: var(--space-md) var(--space-lg);
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .article:hover {
+      border-color: var(--color-highlight);
+    }
+    .article-name {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      letter-spacing: 0.08em;
+      color: var(--color-text);
+      transition: color 0.2s;
+    }
+    .article:hover .article-name {
+      color: var(--color-highlight);
+    }
+    .article-quote {
+      display: block;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: 1.6;
+      margin-top: var(--space-sm);
+    }
+    .article-by {
+      display: block;
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      margin-top: 4px;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: var(--space-lg) var(--space-md);
+      }
+      .article {
+        padding: var(--space-md);
+      }
+    }
+  </style>
+  <main>
+    <a class="back" href="/">← Home</a>
+    <h1>Press</h1>
+
+    {sections.map((section) => (
+      <section class="release">
+        <h2 class="release-title">{section.title}</h2>
+        <p class="release-subtitle">{section.subtitle}</p>
+        <div class="article-list">
+          {section.articles.map((article) => (
+            <a class="article" href={article.url} target="_blank" rel="noopener noreferrer">
+              <span class="article-name">{article.name} ↗</span>
+              {article.quote && <span class="article-quote">“{article.quote}”</span>}
+              {article.by && <span class="article-by">{article.by}</span>}
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</Base>
