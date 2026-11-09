@@ -27,26 +27,26 @@ This is the website for the band **Bad Valentines** (a five-piece rock band from
 
 | What | File |
 |---|---|
-| Home page (new single, upcoming gigs, review quote) | `src/pages/index.astro` |
-| Music links (Spotify, Tidal, Bandcamp…) | `src/pages/music.astro` |
-| Gigs page | `src/pages/gigs.astro` |
-| Stories (press reviews and articles) | `src/pages/stories.astro` |
+| Home page (new single, press quotes, upcoming gigs, videos) | `src/pages/index.astro` |
+| Press page (all reviews, grouped by release) | `src/pages/press.astro` |
 | Press kit / EPK (bio, members, reviews, downloads) | `src/pages/epk.astro` |
 | Design reference page (hidden from search engines) | `src/pages/design-system.astro` |
 | Shared page frame (head, fonts, statistics script) | `src/layouts/Base.astro` |
-| Top menu | `src/components/Nav.astro` |
 | Colours, fonts and sizes for the whole site | `public/styles/global.css` |
 | Pictures | `public/images/` (press kit pictures in `public/images/epk/`) |
 | PDFs (bio, press release) | `public/docs/epk/` |
 | Audio files | `public/audio/epk/` |
 
-Each page file in `src/pages/` becomes a web address: `gigs.astro` → `/gigs`, `epk.astro` → `/epk`, and `index.astro` → the front page.
+Each page file in `src/pages/` becomes a web address: `press.astro` → `/press`, `epk.astro` → `/epk`, and `index.astro` → the front page.
+
+The site is deliberately kept simple: a home page plus a Press page. The press kit (`/epk`) is not linked from the site; the band sends the link to press and venues directly. Avoid adding new pages unless the owner asks.
 
 ## Common updates and how they are done
 
-- **Gigs on the home page:** edit the `gigs` list at the top of `src/pages/index.astro`. Each gig has a `date`, a `place`, and a `ticketUrl` (use `null` when there is no ticket link yet).
-- **Gigs page:** `src/pages/gigs.astro` is written by hand (not from a list). Note: it is separate from the home page list, so the two can get out of sync — check both when gigs change.
-- **Pre-save / review links on the home page:** `preSaveUrl` and `reviewUrl` at the top of `src/pages/index.astro`.
+- **Gigs:** edit the `gigs` list at the top of `src/pages/index.astro`. Each gig has a `date`, a `place`, and a `ticketUrl` (use `null` when there is no ticket link yet). Remove gigs once they have passed.
+- **Press quotes on the home page:** the `quotes` list at the top of `src/pages/index.astro` (keep it to 2–3 quotes). Quotes must match the original article word for word; use "…" where a sentence is shortened.
+- **Reviews on the Press page:** the `sections` list at the top of `src/pages/press.astro`. Remove tracking codes (`?fbclid=…`, `?utm_…`) from links before adding them.
+- **Release link on the home page:** `preSaveUrl` at the top of `src/pages/index.astro`.
 - **Press kit content:** the `members`, `reviews` and `downloads` lists at the top of `src/pages/epk.astro`.
 - **New picture, PDF or audio file:** put it in the right folder under `public/`, then refer to it with a path starting with `/` (for example `/images/epk/band-photo-vertical.jpg`).
 - **Colours:** change them in one place — the `:root` section of `public/styles/global.css`. The pink highlight colour is `--color-highlight`.
